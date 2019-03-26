@@ -17,10 +17,7 @@ class App extends Component {
       <div className="main-wrapper">
         <div className="header-wrapper">
           <div className="paintdraw-wrapper">
-            <PaintDraw 
-              width={window.innerWidth - 65} 
-              height={window.innerHeight - 350}
-            />
+            <PaintDraw/>
           </div>
         </div>
       </div>

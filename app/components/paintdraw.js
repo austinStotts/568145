@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 
+import TickBox from "./tickbox";
+
+// todo:
+// * remake socketio to update canvas data
+// * add clear canvas function
+
+
 class PaintDraw extends Component {
   constructor (props) {
     super(props);
@@ -7,7 +14,11 @@ class PaintDraw extends Component {
       draw: false,
       x: '',
       y: '',
-      undo: [],
+      red: Math.floor(Math.random() * 255), // red value for canvas
+      green: Math.floor(Math.random() * 255), // green value for canvas
+      blue: Math.floor(Math.random() * 255), // blue value for canvas
+      weight: "3",
+      undo: [], // FILO data structure to hold the last 20 canvas'
       image: '',
       room: '',
       current: 'home'
@@ -25,6 +36,12 @@ class PaintDraw extends Component {
     // this.newRoom = this.newRoom.bind(this);
     // this.check = this.check.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+
+    this.changeWeight = this.changeWeight.bind(this);
+  }
+
+  changeWeight (value) {
+    this.setState({weight: value})
   }
 
   start (event) {
@@ -101,10 +118,10 @@ class PaintDraw extends Component {
     if(this.state.draw) {
       const canvas = this.refs.canvas.getContext('2d');
       canvas.beginPath();
-      canvas.strokeStyle = this.props.color;
+      canvas.strokeStyle = `rgb(${this.state.red}, ${this.state.green}, ${this.state.blue})`;
       canvas.lineCap = 'round';
       canvas.lineJoin = 'round';
-      canvas.lineWidth = this.props.weight;
+      canvas.lineWidth = this.state.weight;
       canvas.moveTo(this.state.x - 30, this.state.y - 30);
       canvas.lineTo(event.clientX - 30, event.clientY - 30);
       canvas.stroke();
@@ -134,7 +151,6 @@ class PaintDraw extends Component {
             id="canvas"
             className="paintdraw-canvas"
             ref="canvas" 
-            key={this.props.clear}
             onMouseDown={(event)=>{
               this.start(event);
               this.save();
@@ -146,8 +162,8 @@ class PaintDraw extends Component {
             }} 
             onMouseLeave={this.end}
             onKeyDown={e => this.handleKeyDown(e.keyCode)}
-            width={this.props.width} 
-            height={this.props.height} 
+            width={window.innerWidth - 65} 
+            height={window.innerHeight - 350}
             >
           </canvas>
         </div>
@@ -169,6 +185,13 @@ class PaintDraw extends Component {
               {'undo'}
             </a>
           </div>
+        </div>
+        <div className="weight">
+            <TickBox 
+              buttonClass="weight-buttons" 
+              tickBoxClass="weight-input" 
+              changeValue={this.changeWeight}
+            />
         </div>
       </div>
     )
