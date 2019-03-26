@@ -8,9 +8,9 @@ class Home extends Component {
 
   render () {
     return (
-      <div>
+      <div className="home-wrapper">
         <h1>home</h1>
-        <div>
+        <div className="paint-wrapper">
           <button 
             className="paintdraw-home-button"
             onClick={() => this.props.changeShow("paintdraw")}
@@ -20,7 +20,7 @@ class Home extends Component {
             className="paintdrawpixel-home-button"
             onClick={() => this.props.changeShow("paintdrawpixel")}
             >
-            {`PaintDraw\n Pixel`}</button>
+            PaintDraw Pixel</button>
         </div>
       </div>
     )

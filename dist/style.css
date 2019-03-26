@@ -35,5 +35,54 @@ body {
 }
 
 .weight-input {
-  
+
+}
+
+.home-wrapper {
+  text-align: center;
+}
+
+.paint-wrapper {
+  display: inline-block;
+}
+
+.paintdraw-home-button {
+  width: 200px;
+  height: 100px;
+  margin: 0px 10px 0px 0px;
+  border: 2px solid black;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  border-radius: 10px;
+  cursor: pointer;
+  background-image: url("./paintdraw.png");
+  background-position: bottom;
+  background-size: 110%;
+  transition-duration: 0.3s;
+}
+
+.paintdraw-home-button:hover {
+  background-size: 130%
+}
+
+
+.paintdrawpixel-home-button {
+  width: 200px;
+  height: 100px;
+  margin: 0px 0px 0px 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  cursor: pointer;
+  background-image: url("./paintdrawpixel.png");
+  background-position: top;
+  background-size: 120%;
+  transition-duration: 0.3s;
+}
+
+.paintdrawpixel-home-button:hover {
+  background-size: 140%
 }
