@@ -51,8 +51,10 @@ body {
   height: 100px;
   margin: 0px 10px 0px 0px;
   border: 2px solid black;
-  font-size: 24px;
+  display: inline-block;
+  font-size: 20px;
   font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
   font-style: italic;
   border-radius: 10px;
   cursor: pointer;
@@ -66,16 +68,18 @@ body {
   background-size: 130%
 }
 
-
 .paintdrawpixel-home-button {
+  padding: 0%;
   width: 200px;
   height: 100px;
   margin: 0px 0px 0px 10px;
   border: 2px solid black;
   border-radius: 10px;
-  font-size: 24px;
+  display: inline-block;
+  font-size: 20px;
   font-weight: 600;
   font-style: italic;
+  font-family: 'Roboto Mono', monospace;
   cursor: pointer;
   background-image: url("./paintdrawpixel.png");
   background-position: top;
