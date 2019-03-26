@@ -12,5 +12,19 @@ body {
 
 .header-wrapper {
   padding: 0%;
-  background-color: red;
+  /* background-color: red; */
+}
+
+.paintdraw-wrapper {
+  padding: 0%;
+  margin: 30px;
+}
+
+.paintdraw-canvas-wrapper {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.paintdraw-canvas {
+  outline: none;
 }
