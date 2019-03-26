@@ -1,0 +1,16 @@
+html {
+  padding: 0%;
+}
+
+body {
+  margin: 0%;
+}
+
+.main-wrapper {
+  padding: 0%;
+}
+
+.header-wrapper {
+  padding: 0%;
+  background-color: red;
+}
