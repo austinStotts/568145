@@ -187,3 +187,55 @@ body {
 .undo-button:hover {
   border-color: red;
 }
+
+.color-wrapper {
+  margin: 20px 0px 0px 0px;
+}
+
+.color-label-red {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0px 0px 0px 3px;
+  color: red;
+}
+.color-label-green {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0px 0px 0px 3px;
+  color: green;
+}
+.color-label-blue {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  margin: 0px 0px 0px 3px;
+  color: blue;
+}
+
+.red-slider {
+  display: inline-block;
+  width: 200px;
+}
+
+.green-slider {
+  display: inline-block;
+  width: 200px;
+  
+}
+
+.blue-slider {
+  display: inline-block;
+  width: 200px;
+}
+
+.color-swab {
+  display: inline-block;
+  width: 220px;
+  height: 110px;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.paintdraw-color-wrapper {
+  margin: 0px 0px 0px 30px;
+}

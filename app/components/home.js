@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import Color from "./color";
+
 class Home extends Component {
   constructor (props) {
     super(props);

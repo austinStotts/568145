@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import TickBox from "./tickbox";
+import Color from "./color";
 
 // todo:
 // * remake socketio to update canvas data
@@ -122,8 +123,8 @@ class PaintDraw extends Component {
       canvas.lineCap = 'round';
       canvas.lineJoin = 'round';
       canvas.lineWidth = this.state.weight;
-      canvas.moveTo(this.state.x - 30, this.state.y - 30);
-      canvas.lineTo(event.clientX - 30, event.clientY - 30);
+      canvas.moveTo(this.state.x - 30, this.state.y - 53);
+      canvas.lineTo(event.clientX - 30, event.clientY - 53);
       canvas.stroke();
       canvas.closePath();
       this.setState({x:event.clientX,y:event.clientY});
@@ -196,6 +197,9 @@ class PaintDraw extends Component {
             tickBoxClass="weight-input" 
             changeValue={this.changeWeight}
           />
+        </div>
+        <div className="paintdraw-color-wrapper">
+          <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
       </div>
     )
