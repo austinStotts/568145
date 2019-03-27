@@ -9,7 +9,7 @@ class Home extends Component {
   render () {
     return (
       <div className="home-wrapper">
-        <h1 className="home-title">home</h1>
+        <h1 className="home-title">Paint Draw</h1>
         <div className="paint-wrapper">
           <button 
             className="paintdraw-home-button"
