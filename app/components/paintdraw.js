@@ -145,7 +145,11 @@ class PaintDraw extends Component {
 
   render () {
     return (
-      <div style={{width:'100%',height:'100%'}}>
+      <div className="paintdraw-wrapper">
+        <button 
+          className="home-button"
+          onClick={() => this.props.changeShow("home")}
+        >home</button>
         <div className="paintdraw-canvas-wrapper">
           <canvas
             id="canvas"
@@ -168,30 +172,30 @@ class PaintDraw extends Component {
           </canvas>
         </div>
         <div className="below">
-          <div className="download">
+          <div className="paintdraw-options-bar">
             <a 
-              className="function" 
+              className="download-button" 
               id="download" 
               onClick={this.download} 
               href={this.state.url} 
-              style={{display:'block'}}
             >
               {'download'}
             </a>
             <a 
-              className="function" 
+              className="undo-button" 
               onClick={this.undo}
             >
               {'undo'}
             </a>
           </div>
         </div>
-        <div className="weight">
-            <TickBox 
-              buttonClass="weight-buttons" 
-              tickBoxClass="weight-input" 
-              changeValue={this.changeWeight}
-            />
+        <div className="weight-wrapper">
+          <h3 className="brush-size">brush size</h3>
+          <TickBox 
+            buttonClass="weight-buttons" 
+            tickBoxClass="weight-input" 
+            changeValue={this.changeWeight}
+          />
         </div>
       </div>
     )

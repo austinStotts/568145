@@ -1,9 +1,19 @@
 html {
+  top: 0%;
   padding: 0%;
+  margin: 0%;
+  height: 100%;
 }
 
 body {
   margin: 0%;
+  height: 100%
+}
+
+#root {
+  padding: 0%;
+  margin: 0%;
+  height: 100%;
 }
 
 .main-wrapper {
@@ -17,29 +27,66 @@ body {
 
 .paintdraw-wrapper {
   padding: 0%;
-  margin: 30px;
 }
 
 .paintdraw-canvas-wrapper {
   border: 2px solid black;
   border-radius: 10px;
+  margin: 30px;
 }
 
 .paintdraw-canvas {
   outline: none;
 }
 
+.home-button {
+  border: 1px solid black;
+  margin: 10px 0px 0px 10px;
+  transition-duration: 0.3s;
+  border-radius: 3px;
+  cursor: pointer;
+  outline: none;
+}
+
+.home-button:hover {
+  border-color: red;
+}
+
 
 .weight-buttons {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 3px;
+  transition-duration: 0.3s;
+  height: 18px;
+}
 
+.weight-buttons:hover {
+  border-color: red;
 }
 
 .weight-input {
-
+  width: 30px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 3px;
+  height: 14px;
+  margin: 0px 2px 0px 2px;
 }
 
 .home-wrapper {
   text-align: center;
+  background-image: url("./paintdrawhomebg.png");
+  background-size: 100%;
+  height: 200%;
+  margin: 0%;
+  padding: 0%;
+}
+
+.home-title {
+  margin: 0px 0px 100px 0px;
+  padding: 40px 0px 0px 0px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paint-wrapper {
@@ -89,4 +136,53 @@ body {
 
 .paintdrawpixel-home-button:hover {
   background-size: 140%
+}
+
+.weight-wrapper {
+  text-align: center;
+  display: inline-block;
+  width: 100px;
+}
+
+.brush-size {
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+}
+
+.paintdraw-options-bar {
+  padding: 0%;
+  margin: 0px 0px 0px 30px;
+}
+
+
+.download-button {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 2px 4px 2px 4px;
+  margin: 0px 3px 0px 0px;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  transition-duration: 0.3s;
+}
+
+.download-button:hover {
+  border-color: red;
+}
+
+.undo-button {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 2px 4px 2px 4px;
+  margin: 0px 0px 0px 3px;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  transition-duration: 0.3s;
+}
+
+.undo-button:hover {
+  border-color: red;
 }

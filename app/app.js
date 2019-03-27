@@ -26,13 +26,7 @@ class App extends Component {
       )
     } else if (this.state.show === "paintdraw") {
       return (
-        <div className="main-wrapper">
-          <div className="header-wrapper">
-            <div className="paintdraw-wrapper">
-              <PaintDraw/>
-            </div>
-          </div>
-        </div>
+        <PaintDraw changeShow={this.changeShow}/>
       )
     } else if (this.state.show === "paintdrawpixel") {
       return (
