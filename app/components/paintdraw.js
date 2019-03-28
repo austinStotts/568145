@@ -123,8 +123,8 @@ class PaintDraw extends Component {
       canvas.lineCap = 'round';
       canvas.lineJoin = 'round';
       canvas.lineWidth = this.state.weight;
-      canvas.moveTo(this.state.x - 30, this.state.y - 53);
-      canvas.lineTo(event.clientX - 30, event.clientY - 53);
+      canvas.moveTo(this.state.x - 30, this.state.y - 58);
+      canvas.lineTo(event.clientX - 30, event.clientY - 58);
       canvas.stroke();
       canvas.closePath();
       this.setState({x:event.clientX,y:event.clientY});
@@ -190,6 +190,10 @@ class PaintDraw extends Component {
             </a>
           </div>
         </div>
+        <div className="paintdraw-color-wrapper">
+          <h3 className="color-label">color</h3>
+          <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
+        </div>
         <div className="weight-wrapper">
           <h3 className="brush-size">brush size</h3>
           <TickBox 
@@ -197,9 +201,6 @@ class PaintDraw extends Component {
             tickBoxClass="weight-input" 
             changeValue={this.changeWeight}
           />
-        </div>
-        <div className="paintdraw-color-wrapper">
-          <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
       </div>
     )

@@ -32,7 +32,7 @@ body {
 .paintdraw-canvas-wrapper {
   border: 2px solid black;
   border-radius: 10px;
-  margin: 30px;
+  margin: 30px 30px 0px 30px;
 }
 
 .paintdraw-canvas {
@@ -59,6 +59,7 @@ body {
   border-radius: 3px;
   transition-duration: 0.3s;
   height: 18px;
+  outline: none;
 }
 
 .weight-buttons:hover {
@@ -143,6 +144,7 @@ body {
   text-align: center;
   display: inline-block;
   width: 100px;
+  margin: 10px 0px 10px 30px;
 }
 
 .brush-size {
@@ -154,7 +156,7 @@ body {
 
 .paintdraw-options-bar {
   padding: 0%;
-  margin: 0px 0px 0px 30px;
+  margin: 10px 0px 0px 30px;
 }
 
 
@@ -189,7 +191,7 @@ body {
 }
 
 .color-wrapper {
-  margin: 20px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 .color-label-red {
@@ -236,6 +238,16 @@ body {
   border-radius: 4px;
 }
 
+.color-label {
+  margin: 0%;
+  padding: 0%;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+}
+
 .paintdraw-color-wrapper {
-  margin: 0px 0px 0px 30px;
+  text-align: center;
+  display: inline-block;
+  width: 220px;
+  margin: 10px 0px 0px 30px;
 }

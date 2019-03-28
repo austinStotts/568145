@@ -14,11 +14,13 @@ class TickBox extends Component {
 
   changeValue (value) {
     this.props.changeValue(value)
-    this.setState({value})
+    this.setState({value: Number(value)}, () => {
+    console.log(this.state.value)
+    })
   }
 
   up () {
-    if(this.refs.weightBox.value <= 50) {
+    if(this.refs.weightBox.value < 50) {
       this.changeValue(this.state.value + 1);
     }
   }
