@@ -7,10 +7,10 @@ class PaintDrawPixel extends PureComponent {
     this.state = {
       paint: false,
       color: "red",
-      m: 30,
+      m: 60,
       n: 30,
       cellSize: 20,
-      canvasWidth: 600,
+      canvasWidth: 1200,
       canvasHeight: 600,
       matrix: '',
     }
