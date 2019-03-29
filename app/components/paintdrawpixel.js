@@ -1,18 +1,25 @@
 import React, { PureComponent } from 'react';
 
+import Color from "./color";
+
 class PaintDrawPixel extends PureComponent {
   constructor() {
     super()
 
     this.state = {
       paint: false,
-      color: "red",
+      red: Math.floor(Math.random() * 255),
+      green: Math.floor(Math.random() * 255),
+      blue: Math.floor(Math.random() * 255),
       m: 30,
       n: 30,
       cellSize: 20,
       canvasWidth: 600,
       canvasHeight: 600,
       matrix: '',
+      x: 500,
+      y: 500,
+      style: "paint"
     }
 
     this.drawBoxes = this.drawBoxes.bind(this);
@@ -29,7 +36,6 @@ class PaintDrawPixel extends PureComponent {
     this.startFill = this.startFill.bind(this);
     this.locateIndex = this.locateIndex.bind(this);
   }
-
 
   fill (y, x) {
     if(this.state.matrix[y][x] === 0) this.colorCell({
@@ -132,7 +138,7 @@ class PaintDrawPixel extends PureComponent {
     if(cords[0] === 0) xW = 20;
     if(cords[1] === 0) yW = 20;
     let c = document.getElementById("canvas").getContext("2d");
-    c.fillStyle = this.state.color;
+    c.fillStyle = `rgb(${this.state.red}, ${this.state.green}, ${this.state.blue})`;
     c.fillRect(cords[0],cords[1],xW,yW);
   }
 
@@ -162,7 +168,18 @@ class PaintDrawPixel extends PureComponent {
 
   render() {
     return (
-      <div className="paintdrawpixel-wrapper">
+      <div 
+        className="paintdrawpixel-wrapper"
+        onMouseMove={(e) => {this.setState({y:e.pageY + 5,x:e.pageX})}}
+      >
+        <h1
+          style={{
+            position: "absolute",
+            top: `${this.state.y}px`,
+            left: `${this.state.x}px`,
+            fontSize: "10px",
+          }}
+        >{this.state.style}</h1>
         <div 
           className="paintdrawpixel-canvas"
           onMouseDown={this.turnOn}
@@ -171,8 +188,12 @@ class PaintDrawPixel extends PureComponent {
           onMouseUp={this.turnOff}
           onMouseMove={this.paint}
           onMouseLeave={this.turnOff}
+          onMouseEnter={(e) => {window.scrollTo(0, 0)}}
         >
           <canvas id="canvas" width={this.state.canvasWidth} height={this.state.canvasHeight} style={{border:'1px solid black'}}></canvas>
+        </div>
+        <div className="paindrawpixel-color-wrapper">
+          <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
       </div>
     )
