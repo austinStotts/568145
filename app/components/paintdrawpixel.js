@@ -7,10 +7,10 @@ class PaintDrawPixel extends PureComponent {
     this.state = {
       paint: false,
       color: "red",
-      m: 60,
+      m: 30,
       n: 30,
       cellSize: 20,
-      canvasWidth: 1200,
+      canvasWidth: 600,
       canvasHeight: 600,
       matrix: '',
     }
@@ -126,7 +126,7 @@ class PaintDrawPixel extends PureComponent {
   }
 
   colorCell (e) {
-    let cords = this.locate(e.clientX, e.clientY);
+    let cords = this.locate(e.clientX - 30, e.clientY - 30);
     let xW = 19;
     let yW = 19;
     if(cords[0] === 0) xW = 20;
@@ -137,7 +137,7 @@ class PaintDrawPixel extends PureComponent {
   }
 
   doubleClick (e) {
-    let cords = this.locate(e.clientX, e.clientY);
+    let cords = this.locate(e.clientX - 30, e.clientY - 30);
     let xW = 19;
     let yW = 19;
     if(cords[0] === 0) xW = 20;
@@ -162,18 +162,17 @@ class PaintDrawPixel extends PureComponent {
 
   render() {
     return (
-      <div style={{margin:'0px',padding:'0px'}}>
-        <div style={{margin:'0px',padding:'0px'}}
+      <div className="paintdrawpixel-wrapper">
+        <div 
+          className="paintdrawpixel-canvas"
           onMouseDown={this.turnOn}
-          //onClick={this.startFill}
+          onClick={this.colorCell}
           onDoubleClick={this.doubleClick}
           onMouseUp={this.turnOff}
           onMouseMove={this.paint}
+          onMouseLeave={this.turnOff}
         >
           <canvas id="canvas" width={this.state.canvasWidth} height={this.state.canvasHeight} style={{border:'1px solid black'}}></canvas>
-        </div>
-        <div>
-          <button onClick={() => this.fill(10, 10)}>click</button>
         </div>
       </div>
     )
