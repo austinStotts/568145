@@ -138,7 +138,10 @@ class PaintDraw extends Component {
   }
 
   componentDidMount () {
-    this.refs.canvas.tabIndex = 1000
+    this.refs.canvas.tabIndex = 1000;
+    const canvas = this.refs.canvas.getContext('2d');
+    canvas.fillStyle = "white";
+    canvas.fillRect(0, 0, 100000, 100000);
   }
 
 
