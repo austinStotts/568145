@@ -273,3 +273,7 @@ body {
   display: inline-block;
   margin: 10px 0px 0px 30px;
 }
+
+.paintdrawpixel-options {
+  display: inline-block;
+}

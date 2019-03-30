@@ -195,6 +195,10 @@ class PaintDrawPixel extends PureComponent {
         <div className="paindrawpixel-color-wrapper">
           <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
+        <div className="paintdrawpixel-options">
+          <button>eraser</button>
+          <button>fill</button>
+        </div>
       </div>
     )
   }
