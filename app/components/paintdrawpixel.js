@@ -20,6 +20,7 @@ class PaintDrawPixel extends PureComponent {
       matrix: '',
       x: 500,
       y: 500,
+      url: ""
     }
 
     this.drawBoxes = this.drawBoxes.bind(this);
@@ -39,6 +40,7 @@ class PaintDrawPixel extends PureComponent {
     this.locateIndex = this.locateIndex.bind(this);
 
     this.handleClick = this.handleClick.bind(this);
+    this.download = this.download.bind(this);
   }
 
 
@@ -203,6 +205,13 @@ class PaintDrawPixel extends PureComponent {
     this.createMatrix(this.state.m, this.state.n);
   }
 
+  download () {
+    let canvas = document.getElementById('canvas');
+    let el = document.getElementById('download');
+    this.setState({url:canvas.toDataURL('image/jpeg', 1.0)});
+    el.setAttribute('download', 'myPrettyPicture:)');
+  }
+
   render() {
     return (
       <div 
@@ -245,6 +254,14 @@ class PaintDrawPixel extends PureComponent {
           <button onClick={this.setState({mode:"fill"})}>fill</button>
           <button onClick={this.setState({mode:"paint"})}>paint</button>
         </div>
+        <a 
+              className="download-button" 
+              id="download" 
+              onClick={this.download} 
+              href={this.state.url} 
+            >
+              {'download'}
+            </a>
       </div>
     )
   }
