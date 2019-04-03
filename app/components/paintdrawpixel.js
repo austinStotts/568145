@@ -8,6 +8,7 @@ class PaintDrawPixel extends PureComponent {
 
     this.state = {
       paint: false,
+      mode: "paint",
       red: Math.floor(Math.random() * 255),
       green: Math.floor(Math.random() * 255),
       blue: Math.floor(Math.random() * 255),
@@ -19,7 +20,6 @@ class PaintDrawPixel extends PureComponent {
       matrix: '',
       x: 500,
       y: 500,
-      style: "paint"
     }
 
     this.drawBoxes = this.drawBoxes.bind(this);
@@ -27,15 +27,59 @@ class PaintDrawPixel extends PureComponent {
     this.locate = this.locate.bind(this);
     this.paintWhite = this.paintWhite.bind(this);
     this.doubleClick = this.doubleClick.bind(this);
+
     this.turnOn = this.turnOn.bind(this);
     this.turnOff = this.turnOff.bind(this);
+
     this.paint= this.paint.bind(this);
     this.createMatrix = this.createMatrix.bind(this);
     this.updateMatrix = this.updateMatrix.bind(this);
     this.fill = this.fill.bind(this);
     this.startFill = this.startFill.bind(this);
     this.locateIndex = this.locateIndex.bind(this);
+
+    this.handleClick = this.handleClick.bind(this);
   }
+
+
+  // function to handle click and mouse move events
+  // paint  : normal paint mode
+  // erase  : remove color from cell
+  // fill   : paint all cells within bounds
+  // morror : paint the same cell in other quadrants
+  handleClick (event) {
+    let mode = this.state.mode;
+    // #1
+    if (mode === "paint") {
+      this.paint(event);
+    }
+    // #2
+    else if (mode === "erase") {
+
+    }
+    // #3
+    else if (mode === "fill") {
+      
+    }
+    // #4
+    else if (mode === "mirror") {
+      
+    }
+  }
+
+
+
+  // paint on / off
+  turnOn () {
+    this.setState({paint:true});
+  }
+
+  turnOff () {
+    this.setState({paint:false});
+  }
+
+
+
 
   fill (y, x) {
     if(this.state.matrix[y][x] === 0) this.colorCell({
@@ -153,14 +197,6 @@ class PaintDrawPixel extends PureComponent {
     c.fillRect(cords[0],cords[1],xW,yW);
   }
 
-  turnOn () {
-    this.setState({paint:true});
-  }
-
-  turnOff () {
-    this.setState({paint:false});
-  }
-
   componentDidMount () {
     this.paintWhite();
     this.createMatrix(this.state.m, this.state.n);
@@ -179,14 +215,14 @@ class PaintDrawPixel extends PureComponent {
             left: `${this.state.x}px`,
             fontSize: "10px",
           }}
-        >{this.state.style}</h1>
+        >{this.state.mode}</h1>
         <div 
           className="paintdrawpixel-canvas"
           onMouseDown={this.turnOn}
           onClick={this.colorCell}
           onDoubleClick={this.doubleClick}
           onMouseUp={this.turnOff}
-          onMouseMove={this.paint}
+          onMouseMove={this.handleClick}
           onMouseLeave={this.turnOff}
           onMouseEnter={(e) => {window.scrollTo(0, 0)}}
         >
@@ -196,8 +232,10 @@ class PaintDrawPixel extends PureComponent {
           <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
         <div className="paintdrawpixel-options">
-          <button>eraser</button>
+          <button>paint</button>
+          <button>erase</button>
           <button>fill</button>
+          <button>mirror</button>
         </div>
       </div>
     )
