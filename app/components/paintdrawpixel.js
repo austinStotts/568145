@@ -12,8 +12,8 @@ class PaintDrawPixel extends PureComponent {
       red: Math.floor(Math.random() * 255),
       green: Math.floor(Math.random() * 255),
       blue: Math.floor(Math.random() * 255),
-      m: 30,
-      n: 30,
+      m: 35,
+      n: 35,
       cellSize: 20,
       canvasWidth: 600,
       canvasHeight: 600,
@@ -49,6 +49,7 @@ class PaintDrawPixel extends PureComponent {
   // morror : paint the same cell in other quadrants
   handleClick (event) {
     let mode = this.state.mode;
+    
     // #1
     if (mode === "paint") {
       this.paint(event);
@@ -155,7 +156,7 @@ class PaintDrawPixel extends PureComponent {
   paintWhite () {
     let c = document.getElementById("canvas").getContext("2d");
     c.fillStyle = "white";
-    c.fillRect(0, 0, this.state.canvasWidth, this.state.canvasHeight);
+    c.fillRect(0, 0, this.state.m * this.state.cellSize, this.state.n * this.state.cellSize);
     this.drawBoxes();
   }
 
@@ -164,10 +165,10 @@ class PaintDrawPixel extends PureComponent {
     let c = document.getElementById("canvas").getContext("2d");
     c.fillStyle = "black";
     for(let i = 1; i < this.state.m; i++) {
-      c.fillRect(i * 20, 0, 1, this.state.canvasHeight);
+      c.fillRect(i * 20, 0, 1, this.state.n * this.state.cellSize);
     }
     for(let i = 1; i < this.state.n; i++) {
-      c.fillRect(0, i * 20, this.state.canvasWidth, 1);
+      c.fillRect(0, i * 20, this.state.m * this.state.cellSize, 1);
     }
   }
 
@@ -224,18 +225,25 @@ class PaintDrawPixel extends PureComponent {
           onMouseUp={this.turnOff}
           onMouseMove={this.handleClick}
           onMouseLeave={this.turnOff}
-          onMouseEnter={(e) => {window.scrollTo(0, 0)}}
         >
-          <canvas id="canvas" width={this.state.canvasWidth} height={this.state.canvasHeight} style={{border:'1px solid black'}}></canvas>
+          <canvas 
+            id="canvas" 
+            width={this.state.m * this.state.cellSize} 
+            height={this.state.n * this.state.cellSize} 
+            style={{border:'1px solid black'}}>
+          </canvas>
         </div>
         <div className="paindrawpixel-color-wrapper">
           <Color changeColor={(val) => this.setState(val)} red={this.state.red} green={this.state.green} blue={this.state.blue}/>
         </div>
+        <div className="paintdrawpixel-clear-wrapper">
+          <button onClick={this.paintWhite}>clear</button>
+        </div>
         <div className="paintdrawpixel-options">
-          <button>paint</button>
-          <button>erase</button>
-          <button>fill</button>
-          <button>mirror</button>
+          <button onClick={this.setState({mode:"erase"})}>erase</button>
+          <button onClick={this.setState({mode:"mirror"})}>mirror</button>
+          <button onClick={this.setState({mode:"fill"})}>fill</button>
+          <button onClick={this.setState({mode:"paint"})}>paint</button>
         </div>
       </div>
     )
